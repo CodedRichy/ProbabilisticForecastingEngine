@@ -1,0 +1,14 @@
+{
+  "bankroll": 100,
+  "risk_mode": "moderate",
+  "kelly_multipliers": {"conservative": 0.25, "moderate": 0.5, "aggressive": 1.0},
+  "min_edge": 0.03,
+  "max_daily_exposure": 0.20,
+  "competitions": ["wc2026"],
+  "never_bet_draws": false,
+  "min_odds": 1.30,
+  "max_odds": 15.0,
+  "telegram_alerts": true,
+  "alert_on_steam": true,
+  "alert_on_lag": true
+}

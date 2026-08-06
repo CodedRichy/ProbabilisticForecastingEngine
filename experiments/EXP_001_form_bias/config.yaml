@@ -1,0 +1,32 @@
+# EXP_001: Recent Form Bias
+# H-001: Teams on extended winning streaks are overpriced
+
+experiment_id: EXP_001
+hypothesis: "Teams on 5+ match winning streaks are overpriced by bookmakers due to recency bias"
+
+# Pre-registration
+pre_registered: true
+date_registered: "2026-06-23"
+
+# Parameters
+streak_threshold: 5        # minimum consecutive wins to trigger signal
+lookback_matches: 10       # how far back to compute form
+target: home_implied        # baseline probability column
+outcome: home_win           # binary outcome column
+odds_col: home_odds         # decimal odds column
+
+# Scope
+leagues: null               # null = all available leagues
+min_season: "2010-11"
+
+# Analysis plan (pre-registered)
+analysis:
+  primary_metric: brier_skill_score
+  significance_test: paired_brier_test
+  alpha: 0.05
+  robustness:
+    - vary streak_threshold: [3, 4, 5, 6, 7]
+    - cross_league: true
+    - cross_season: true
+
+random_seed: 42

@@ -1,0 +1,59 @@
+# Project Apollo - Global Settings
+
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  cache: data/cache
+  experiments: experiments
+  signals: signals
+  reports: reports
+
+defaults:
+  # Minimum sample size for any statistical test
+  min_sample_size: 200
+
+  # Significance level AFTER FDR correction
+  alpha: 0.05
+
+  # Minimum seasons for cross-temporal validation
+  min_seasons: 3
+
+  # Minimum leagues for cross-domain validation
+  min_leagues: 2
+
+  # Hold-out seasons (NEVER touch during exploration)
+  holdout_seasons:
+    - "2023-24"
+    - "2024-25"
+
+  # Random seed for reproducibility
+  random_seed: 42
+
+  # Bookmaker overround removal method: "multiplicative" or "power"
+  overround_method: multiplicative
+
+leagues:
+  - code: EPL
+    name: English Premier League
+    country: England
+  - code: LaLiga
+    name: La Liga
+    country: Spain
+  - code: SerieA
+    name: Serie A
+    country: Italy
+  - code: Bundesliga
+    name: Bundesliga
+    country: Germany
+  - code: Ligue1
+    name: Ligue 1
+    country: France
+
+data_sources:
+  football_data_uk:
+    url: https://www.football-data.co.uk
+    format: csv
+    leagues: [EPL, LaLiga, SerieA, Bundesliga, Ligue1]
+    seasons_available: "1993-present"
+    includes_odds: true
+    notes: "Most reliable free source for historical odds"
